@@ -1,4 +1,4 @@
-package ro.rachieru.dragos.livedata
+package ro.dragossusi.livedata
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData

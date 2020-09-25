@@ -1,4 +1,4 @@
-package ro.rachieru.dragos.livedata
+package ro.dragossusi.livedata
 
 import ro.rachieru.dragos.errordata.ErrorData
 

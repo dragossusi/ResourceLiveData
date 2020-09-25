@@ -1,4 +1,4 @@
-package ro.rachieru.dragos.livedata
+package ro.dragossusi.livedata
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
@@ -14,7 +14,7 @@ class AllNullLiveData(
     private vararg val liveDatas: LiveData<ErrorData?>
 ) : MediatorLiveData<Boolean>() {
 
-    constructor(vararg liveDatas: ValidationErrorContainer) : this(
+    constructor(vararg liveDatas: ro.dragossusi.livedata.ValidationErrorContainer) : this(
         *(liveDatas.map { it.validationError }.toTypedArray())
     )
 

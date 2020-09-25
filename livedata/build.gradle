@@ -1,3 +1,7 @@
+plugins {
+    id 'maven-publish'
+}
+
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -24,6 +28,7 @@ android {
     }
 }
 
+
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -33,10 +38,35 @@ dependencies {
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     api "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
-    api 'com.github.dragossusi:Error-Data:1.0'
+    api 'ro.dragossusi:errordata:1.0'
 
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+}
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                // Applies the component for the release build variant.
+                from components.release
+
+                // You can then customize attributes of the publication as shown below.
+                groupId = 'ro.dragossusi'
+                artifactId = 'livedata-common'
+                version = '1.0.0'
+            }
+            // Creates a Maven publication called “debug”.
+            debug(MavenPublication) {
+                // Applies the component for the debug build variant.
+                from components.debug
+
+                groupId = 'ro.dragossusi'
+                artifactId = 'livedata-common-debug'
+                version = '1.0'
+            }
+        }
+    }
 }

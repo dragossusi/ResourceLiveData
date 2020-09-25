@@ -1,4 +1,4 @@
-package ro.rachieru.dragos.livedata
+package ro.dragossusi.livedata
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
@@ -8,7 +8,7 @@ import androidx.lifecycle.MediatorLiveData
  * @author Dragos
  * @since 16.07.2020
  */
-class ObservableLiveData<T> constructor() : MediatorLiveData<T?>() {
+class ObservableLiveData<T>() : MediatorLiveData<T?>() {
 
     private var currentSource: LiveData<out T?>? = null
 
