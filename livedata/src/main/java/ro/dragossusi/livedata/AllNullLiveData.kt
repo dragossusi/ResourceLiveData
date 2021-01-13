@@ -14,7 +14,7 @@ class AllNullLiveData(
     private vararg val liveDatas: LiveData<ErrorData?>
 ) : MediatorLiveData<Boolean>() {
 
-    constructor(vararg liveDatas: ro.dragossusi.livedata.ValidationErrorContainer) : this(
+    constructor(vararg liveDatas: ValidationErrorContainer) : this(
         *(liveDatas.map { it.validationError }.toTypedArray())
     )
 

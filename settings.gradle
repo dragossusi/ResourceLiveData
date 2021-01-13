@@ -1,3 +1,0 @@
-include ':resource-livedata'
-include ':livedata'
-rootProject.name = "Resource LiveData"
