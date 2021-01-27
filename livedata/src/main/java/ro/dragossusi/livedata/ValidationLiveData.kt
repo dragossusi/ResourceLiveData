@@ -3,7 +3,7 @@ package ro.dragossusi.livedata
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
-import ro.rachieru.dragos.errordata.ErrorData
+import ro.dragossusi.messagedata.MessageData
 
 /**
  *
@@ -23,7 +23,7 @@ open class ValidationLiveData<T>(
     ) : this(liveData, MutableLiveData(mandatory), validator)
 
 
-    protected val _validationError = MediatorLiveData<ErrorData?>().apply {
+    protected val _validationError = MediatorLiveData<MessageData?>().apply {
         addSource(liveData) {
             check(it, mandatory.value)
         }
@@ -32,13 +32,13 @@ open class ValidationLiveData<T>(
         }
     }
 
-    override val validationError: LiveData<ErrorData?>
+    override val validationError: LiveData<MessageData?>
         get() = _validationError
 
-    val show = MutableLiveData<Boolean?>(false)
+    val show = MutableLiveData(false)
 
-    protected val _errorData: LiveData<ErrorData?> = ErrorLiveData(_validationError, show)
-    val errorData: LiveData<ErrorData?>
+    protected val _errorData: LiveData<MessageData?> = ErrorLiveData(_validationError, show)
+    val errorData: LiveData<MessageData?>
         get() = _errorData
 
     override var shown: Boolean

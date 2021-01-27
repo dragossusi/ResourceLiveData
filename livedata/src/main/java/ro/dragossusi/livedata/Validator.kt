@@ -1,6 +1,7 @@
 package ro.dragossusi.livedata
 
-import ro.rachieru.dragos.errordata.ErrorData
+import ro.dragossusi.messagedata.MessageData
+
 
 /**
  *
@@ -10,4 +11,4 @@ import ro.rachieru.dragos.errordata.ErrorData
  * return   null if no error found
  *          an errordata if there's an error
  */
-typealias FieldValidator<T> = (T?, mandatory: Boolean) -> ErrorData?
+typealias FieldValidator<T> = (T?, mandatory: Boolean) -> MessageData?

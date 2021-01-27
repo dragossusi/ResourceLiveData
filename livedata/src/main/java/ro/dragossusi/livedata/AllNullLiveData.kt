@@ -3,7 +3,7 @@ package ro.dragossusi.livedata
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.Observer
-import ro.rachieru.dragos.errordata.ErrorData
+import ro.dragossusi.messagedata.MessageData
 
 /**
  *
@@ -11,7 +11,7 @@ import ro.rachieru.dragos.errordata.ErrorData
  * @since 09.07.2020
  */
 class AllNullLiveData(
-    private vararg val liveDatas: LiveData<ErrorData?>
+    private vararg val liveDatas: LiveData<MessageData?>
 ) : MediatorLiveData<Boolean>() {
 
     constructor(vararg liveDatas: ValidationErrorContainer) : this(
@@ -19,7 +19,7 @@ class AllNullLiveData(
     )
 
     init {
-        val observer = Observer<ErrorData?> {
+        val observer = Observer<MessageData?> {
             value = check()
         }
         liveDatas.forEach {

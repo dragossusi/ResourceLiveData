@@ -2,7 +2,7 @@ package ro.dragossusi.livedata
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import ro.rachieru.dragos.errordata.ErrorData
+import ro.dragossusi.messagedata.MessageData
 
 /**
  *
@@ -10,9 +10,9 @@ import ro.rachieru.dragos.errordata.ErrorData
  * @since 09.07.2020
  */
 class ErrorLiveData(
-    private val errorData: LiveData<out ErrorData?>,
+    private val errorData: LiveData<out MessageData?>,
     private val show: LiveData<Boolean?>
-) : MediatorLiveData<ErrorData?>() {
+) : MediatorLiveData<MessageData?>() {
 
     fun check() {
         value = if (show.value == true) {

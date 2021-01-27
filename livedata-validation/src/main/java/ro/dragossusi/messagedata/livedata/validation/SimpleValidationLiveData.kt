@@ -3,6 +3,7 @@ package ro.dragossusi.messagedata.livedata.validation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ro.dragossusi.livedata.FieldValidator
+import ro.dragossusi.messagedata.MessageData
 
 /**
  *

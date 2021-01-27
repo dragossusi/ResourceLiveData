@@ -2,7 +2,7 @@ package ro.dragossusi.livedata
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import ro.rachieru.dragos.errordata.ErrorData
+import ro.dragossusi.messagedata.MessageData
 
 /**
  *
@@ -10,9 +10,9 @@ import ro.rachieru.dragos.errordata.ErrorData
  * @since 11.08.2020
  */
 class CombinedErrorLiveData(
-    private val main: LiveData<ErrorData?>,
-    private val fallback: LiveData<ErrorData?>
-) : MediatorLiveData<ErrorData?>() {
+    private val main: LiveData<MessageData?>,
+    private val fallback: LiveData<MessageData?>
+) : MediatorLiveData<MessageData?>() {
 
     init {
         addSource(main) {

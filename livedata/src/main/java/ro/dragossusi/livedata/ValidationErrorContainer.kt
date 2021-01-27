@@ -1,7 +1,7 @@
 package ro.dragossusi.livedata
 
 import androidx.lifecycle.LiveData
-import ro.rachieru.dragos.errordata.ErrorData
+import ro.dragossusi.messagedata.MessageData
 
 
 /**
@@ -10,6 +10,6 @@ import ro.rachieru.dragos.errordata.ErrorData
  * @author dragos
  */
 interface ValidationErrorContainer {
-    val validationError: LiveData<ErrorData?>
+    val validationError: LiveData<MessageData?>
     var shown: Boolean
 }
