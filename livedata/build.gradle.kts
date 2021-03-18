@@ -43,7 +43,7 @@ dependencies {
     api("androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_version}")
     api("androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle_version}")
 
-    api("ro.dragossusi:messagedata:1.0.1")
+    api("ro.dragossusi:messagedata:1.0.4")
 
     testImplementation("junit:junit:4.13.1")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")

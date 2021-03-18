@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import ro.dragossusi.livedata.ErrorLiveData
+import ro.dragossusi.livedata.ValidationErrorContainer
 import ro.dragossusi.messagedata.MessageData
 
 /**
