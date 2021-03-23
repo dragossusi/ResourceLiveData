@@ -9,7 +9,7 @@ Gradle:
 
 ```gradle
 dependencies {
-  implementation 'ro.dragossusi:livedata-common:1.0.4'
+  implementation 'ro.dragossusi:livedata-common:1.0.5'
 }
 ```
 
@@ -21,6 +21,6 @@ Gradle:
 
 ```gradle
 dependencies {
-  implementation 'ro.dragossusi:messagedata-livedata-validation:1.0.4'
+  implementation 'ro.dragossusi:messagedata-livedata-validation:1.0.5'
 }
 ```
