@@ -9,12 +9,13 @@ import androidx.lifecycle.MediatorLiveData
  * @since 13/01/2021
  */
 class NotLiveData(
-    val liveData: LiveData<out Boolean?>
+    val liveData: LiveData<out Boolean?>,
+    val defaultIfNull: Boolean? = null
 ) : MediatorLiveData<Boolean?>() {
 
     init {
         addSource(liveData) {
-            value = it?.not()
+            value = it?.not() ?: defaultIfNull
         }
     }
 

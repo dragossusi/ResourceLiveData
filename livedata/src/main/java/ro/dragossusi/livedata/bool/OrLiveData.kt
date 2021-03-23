@@ -10,7 +10,8 @@ import androidx.lifecycle.Observer
  * @since 13/01/2021
  */
 class OrLiveData(
-    private vararg val liveDatas: LiveData<Boolean>
+    private vararg val liveDatas: LiveData<Boolean>,
+    val defaultIfNull: Boolean = false
 ) : MediatorLiveData<Boolean>() {
 
     init {
@@ -24,7 +25,7 @@ class OrLiveData(
 
     private fun check(): Boolean {
         return liveDatas.any {
-            it.value!!
+            it.value ?: defaultIfNull
         }
     }
 

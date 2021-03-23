@@ -9,7 +9,7 @@ import ro.dragossusi.messagedata.MessageData
  * @author Dragos
  * @since 11.08.2020
  */
-class CombinedErrorLiveData(
+class CombinedMessageLiveData(
     private val main: LiveData<MessageData?>,
     private val fallback: LiveData<MessageData?>
 ) : MediatorLiveData<MessageData?>() {
