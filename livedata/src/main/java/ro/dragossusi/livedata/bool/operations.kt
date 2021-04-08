@@ -1,4 +1,4 @@
-package tech.modex.mobile.banking.livedata.bool
+package ro.dragossusi.livedata.bool
 
 import androidx.lifecycle.LiveData
 import ro.dragossusi.livedata.bool.NotLiveData
