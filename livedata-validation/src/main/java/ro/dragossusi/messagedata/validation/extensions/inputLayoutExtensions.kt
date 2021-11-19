@@ -10,10 +10,12 @@ import ro.dragossusi.messagedata.android.parser.toMessageDataParser
  * @author Dragos
  * @since 09.07.2020
  */
+@Suppress("unused")
 fun TextInputLayout.setTextInputError(
     errorData: MessageData?
 ) = setTextInputError(errorData?.getMessage(context.toMessageDataParser()), errorData != null)
 
+@Suppress("unused")
 fun EditText.setEditTextError(
     errorData: MessageData?
 ) = setEditTextError(errorData?.getMessage(context.toMessageDataParser()), errorData != null)

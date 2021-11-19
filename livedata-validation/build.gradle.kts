@@ -33,18 +33,16 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}")
-    implementation("androidx.core:core-ktx:1.3.2")
-    implementation("androidx.appcompat:appcompat:1.2.0")
+    implementation("androidx.core:core-ktx:1.7.0")
+    implementation("androidx.appcompat:appcompat:1.4.0")
 
     implementation("com.google.android.material:material:${Versions.material}")
 
-    implementation("ro.dragossusi:messagedata-android:${Versions.app}")
+    implementation("ro.dragossusi:messagedata:${Versions.messagedata}")
 
     implementation(project(":livedata"))
 
     testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.2")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
 
 }
 
@@ -87,23 +85,32 @@ afterEvaluate {
                 }
             }
         }
-        repositories {
-            maven {
-                name = "sonatype"
-                url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
-                credentials {
-                    username = project.property("sonatype.username").toString()
-                    password = project.property("sonatype.password").toString()
+        if (project.hasSonatypeCredentials()) {
+            repositories {
+                maven {
+                    name = "sonatype"
+                    url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+                    credentials {
+                        username = project.property("sonatype.username").toString()
+                        password = project.property("sonatype.password").toString()
+                    }
                 }
             }
         }
     }
 
-    signing {
+    if (project.hasSonatypeCredentials()) {
+        signing {
 //        val signingKey: String = localProps.getProperty("signing.key")
 //        val signingPassword: String = localProps.getProperty("signing.password")
 //        useInMemoryPgpKeys(signingKey, signingPassword)
 //        useGpgCmd()
-        sign(publishing.publications["release"])
+            sign(publishing.publications["release"])
+        }
     }
+}
+
+fun Project.hasSonatypeCredentials(): Boolean {
+    return project.hasProperty("sonatype.username") ||
+            project.hasProperty("sonatype.password")
 }

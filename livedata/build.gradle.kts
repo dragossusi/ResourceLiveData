@@ -10,13 +10,11 @@ plugins {
 }
 
 android {
-    compileSdkVersion(30)
+    compileSdk = 31
 
     defaultConfig {
-        minSdkVersion(21)
-        targetSdkVersion(30)
-        versionCode = 2
-        versionName = Versions.app
+        minSdk = 21
+        targetSdk = 31
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -37,24 +35,20 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}")
-    implementation("androidx.core:core-ktx:1.3.2")
-    implementation("androidx.appcompat:appcompat:1.2.0")
+    implementation("androidx.core:core-ktx:1.7.0")
+    implementation("androidx.appcompat:appcompat:1.4.0")
 
     api("androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_version}")
     api("androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle_version}")
 
-    api("ro.dragossusi:messagedata:${Versions.app}")
+    api("ro.dragossusi:messagedata:${Versions.messagedata}")
 
-    testImplementation("junit:junit:4.13.1")
-    androidTestImplementation("androidx.test.ext:junit:1.1.2")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
+    testImplementation("junit:junit:4.13.2")
 
 }
 
 
 afterEvaluate {
-    val localProps = Properties()
-    localProps.load(FileInputStream(file("maven.properties")))
     publishing {
         publications {
             // Creates a Maven publication called "release".
@@ -93,19 +87,28 @@ afterEvaluate {
                 }
             }
         }
-        repositories {
-            maven {
-                name = "sonatype"
-                url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
-                credentials {
-                    username = localProps.getProperty("sonatype.username")
-                    password = localProps.getProperty("sonatype.password")
+        if (project.hasSonatypeCredentials()) {
+            repositories {
+                maven {
+                    name = "sonatype"
+                    url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+                    credentials {
+                        username = project.property("sonatype.username").toString()
+                        password = project.property("sonatype.password").toString()
+                    }
                 }
             }
         }
     }
 
-    signing {
-        sign(publishing.publications["release"])
+    if (project.hasSonatypeCredentials()) {
+        signing {
+            sign(publishing.publications["release"])
+        }
     }
+}
+
+fun Project.hasSonatypeCredentials(): Boolean {
+    return project.hasProperty("sonatype.username") ||
+            project.hasProperty("sonatype.password")
 }
