@@ -1,12 +1,8 @@
-import java.io.FileInputStream
-import java.util.*
-
 plugins {
     `maven-publish`
     signing
     id("com.android.library")
     kotlin("android")
-    kotlin("android.extensions")
 }
 
 android {
@@ -34,7 +30,6 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}")
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.4.0")
 
